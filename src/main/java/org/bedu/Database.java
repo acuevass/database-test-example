@@ -17,7 +17,7 @@ public class Database {
     public int size(){
         return db.size();
     }
-    public Product getByID(long id) {
+    public Product getById(long id) {
         for (Product product : db) {
             if(product.getId() == id) {
                 return product;
@@ -27,6 +27,23 @@ public class Database {
     }
     public void clear() {
         db.clear();
+    }
+
+    public void updateById(Product updatedProduct) {
+        for (Product product : db) {
+            if (product.getId() == updatedProduct.getId()) {
+                product.setName(updatedProduct.getName());
+                return;
+            }
+        }
+    }
+
+    public Product deleteById(long id){
+        for(Product product : db){
+            if(product.getId() == id)
+                db.remove(product);
+        }
+        return null;
     }
 
 }
