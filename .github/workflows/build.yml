@@ -17,7 +17,7 @@ jobs:
           distribution: "zulu"
 
       - name: Ejecutar las pruebas
-        run: ./gradle test --no-daemon
+        run: gradle test --no-daemon
 
 # Ejecutar el pipeline en cada push sobre la rama "master"
 on:
