@@ -69,14 +69,11 @@ class DatabaseTest {
         db.insert(new Product(3, "Mordisko"));
         db.insert(new Product(4, "Sabritas 30g"));
 
-        assertEquals(db.size(), 4);
+        Product p = db.getById(4);
 
-        Product p = new Product(4, "Fritos");
-        db.updateById(p);
+        db.updateById(4, "Fritos");
+        assertEquals(p.getName(), "Fritos");
 
-        Product updatedProduct = db.getById(4);
-
-        assertEquals(updatedProduct.getName(), "Fritos");
     }
 
     @Test
@@ -89,7 +86,7 @@ class DatabaseTest {
 
         assertEquals(db.size(), 4);
 
-        Product p = db.deleteById(4);
+        db.deleteById(4);
 
         assertEquals(db.size(),3);
     }

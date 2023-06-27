@@ -29,21 +29,21 @@ public class Database {
         db.clear();
     }
 
-    public void updateById(Product updatedProduct) {
+    public void updateById(long productId, String newName) {
         for (Product product : db) {
-            if (product.getId() == updatedProduct.getId()) {
-                product.setName(updatedProduct.getName());
-                return;
+            if (product.getId() == productId) {
+                product.setName(newName);
+                break;
             }
         }
     }
-
-    public Product deleteById(long id){
-        for(Product product : db){
-            if(product.getId() == id)
+    public void deleteById(long productId) {
+        for (Product product : db) {
+            if (product.getId() == productId) {
                 db.remove(product);
+                break;
+            }
         }
-        return null;
     }
 
 }
